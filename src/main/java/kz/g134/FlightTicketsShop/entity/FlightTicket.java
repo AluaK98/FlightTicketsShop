@@ -19,6 +19,9 @@ public class FlightTicket extends BaseClass {
     @Column(name="name",nullable=false)
     private String name;
 
+    @Column(name="unique_number", unique=true, nullable=false)
+    private Integer uniqueNumber;
+
     @Column(name="price")
     private Integer price;
 
@@ -27,16 +30,15 @@ public class FlightTicket extends BaseClass {
     private AircraftType aircraftType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="class_id")
+    @JoinColumn(name="class_id", nullable=false)
     private ClassType classType;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="luggage_id",nullable=false)
+    private Luggage luggage;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-               name="flighttickets_directions",
-               joinColumns = @JoinColumn(name="flightticket_id"),
-               inverseJoinColumns = @JoinColumn(name="direction_id")
-    )
-    private List<Direction> directions;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "direction_id", nullable = false)
+    private Direction direction;
 }

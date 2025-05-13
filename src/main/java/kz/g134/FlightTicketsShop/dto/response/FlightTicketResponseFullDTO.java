@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FlightTicketResponseDTO {
+public class FlightTicketResponseFullDTO {
     private Long id;
     private Integer uniqueNumber;
     private String name;
@@ -21,3 +19,4 @@ public class FlightTicketResponseDTO {
     private LuggageResponseDTO luggage;
     private DirectionResponseDTO direction;
 }
+
