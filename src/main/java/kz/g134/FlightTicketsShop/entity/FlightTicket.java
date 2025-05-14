@@ -37,7 +37,6 @@ public class FlightTicket extends BaseClass {
     @JoinColumn(name="luggage_id",nullable=false)
     private Luggage luggage;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "direction_id", nullable = false)
     private Direction direction;

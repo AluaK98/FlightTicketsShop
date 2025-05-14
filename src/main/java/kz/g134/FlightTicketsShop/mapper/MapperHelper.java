@@ -25,22 +25,24 @@ public class MapperHelper {
     private final DirectionRepository directionRepository;
 
     @Named("mapToAircraftType")
-    public AircraftType findByIdAircraftType(Long id){
-        return aircraftTypeRepository.findById(id).orElseThrow(()-> new AircraftTypeNotFoundException("Aircraft type not found"));
+    public AircraftType findByIdAircraftType(Long id) {
+        return aircraftTypeRepository.findById(id).orElseThrow(() -> new AircraftTypeNotFoundException("Aircraft type not found"));
     }
 
     @Named("mapToClassType")
     public ClassType findByIdClassType(Long id) {
         return classTypeRepository.findById(id).orElseThrow(() -> new ClassTypeNotFoundException("Class type not found"));
     }
+
     @Named("mapToLuggage")
-    public Luggage findByIdLuggage(Long id){
-        return luggageRepository.findById(id).orElseThrow(()->new LuggageNotFoundException("Luggage not found"));
-    }
-    @Named("mapToDirection")
-    public Direction findByIdDirection(Long id){
-        return directionRepository.findById(id).orElseThrow(()->new DirectionNotFoundException("Direction not found"));
+    public Luggage findByIdLuggage(Long id) {
+        return luggageRepository.findById(id).orElseThrow(() -> new LuggageNotFoundException("Luggage not found"));
     }
 
+    @Named("mapToDirection")
+    public Direction findByIdDirection(Long id) {
+        return directionRepository.findById(id).orElseThrow(() -> new DirectionNotFoundException("Direction not found"));
     }
+
+}
 

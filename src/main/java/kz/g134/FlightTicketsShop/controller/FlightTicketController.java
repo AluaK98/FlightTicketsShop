@@ -32,10 +32,12 @@ public class FlightTicketController {
             Pageable pageable){
         return new ResponseEntity(flightTicketService.getAllFlightTickets(name,pageable), HttpStatus.OK);
     }
+
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody @Valid FlightTicketRequestDTO dto) {
       return new ResponseEntity<>(flightTicketService.createFlightTicket(dto),HttpStatus.CREATED);
     }
+
     @GetMapping(value="/{id}")
     public ResponseEntity<FlightTicketResponseFullDTO> getFlightTicketById(@PathVariable Long id) {
         return new ResponseEntity<>(flightTicketService.getFlightTicketById(id),HttpStatus.OK);
