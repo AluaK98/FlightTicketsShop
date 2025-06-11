@@ -19,7 +19,7 @@ public class FlightTicket extends BaseClass {
     @Column(name="name",nullable=false)
     private String name;
 
-    @Column(name="unique_number", unique=true, nullable=false)
+    @Column(name="uniquenumber", unique=true, nullable=false)
     private Integer uniqueNumber;
 
     @Column(name="price")
