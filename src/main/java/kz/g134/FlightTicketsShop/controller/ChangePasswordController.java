@@ -1,13 +1,13 @@
 package kz.g134.FlightTicketsShop.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import kz.g134.FlightTicketsShop.dto.request.ForgetPasswordDTO;
-import kz.g134.FlightTicketsShop.dto.request.UserRegisterRequestDTO;
 import kz.g134.FlightTicketsShop.exception.PasswordNotMatchException;
 import kz.g134.FlightTicketsShop.exception.UserNotExistsException;
-import kz.g134.FlightTicketsShop.exception.UsernameAlreadyExistException;
 import kz.g134.FlightTicketsShop.service.ChangePasswordService;
-import kz.g134.FlightTicketsShop.service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -23,6 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ChangePasswordController {
     private final ChangePasswordService changePasswordService;
+
+
+    @Operation(summary = "Смена пароля пользователя", description = "Смена пароля для сущетсвующего пользователя")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "202", description = "Пароль успешно обновлен"),
+            @ApiResponse(responseCode = "400", description = "Ошибка пользователя"),
+            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка в системе")
+    })
 
     @PostMapping
     public ResponseEntity<Void> changePassword(@RequestBody @Valid ForgetPasswordDTO dto) {

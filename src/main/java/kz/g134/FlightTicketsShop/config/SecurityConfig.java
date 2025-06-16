@@ -47,7 +47,9 @@ public class SecurityConfig {
                         .authorizeHttpRequests(
                                 auth -> auth
                                         .requestMatchers("v1/register/**").permitAll()
-                                        .requestMatchers("v1/directions/**").hasRole("ADMIN")
+                                        .requestMatchers("v1/roles/**").hasAnyRole("ADMIN")
+                                        .requestMatchers("swagger-ui/**").permitAll()
+                                        .requestMatchers("v1/directions/**").hasAnyRole("ADMIN", "MANAGER")
                                         .requestMatchers("v1/change-password/**").permitAll()
                                         .anyRequest().authenticated()
                         ).build();
